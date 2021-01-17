@@ -10,6 +10,11 @@ class HomeController extends Controller
          return view("home.index");
          //echo " deneme";
     }
+    public function aboutus()
+    {
+        return view("home.about");
+
+    }
     public function test($id,$name)
     {
         $data['id']=$id;
