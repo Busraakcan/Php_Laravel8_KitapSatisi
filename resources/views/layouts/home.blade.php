@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="{{asset('assets')}}/home//css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="{{asset('assets')}}/home/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="{{asset('assets')}}/home/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="{{asset('assets')}}/home/css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="{{asset('assets')}}/home/css/nice-select.css" type="text/css">
@@ -41,7 +41,7 @@
 @section('content')
 @show
 @include('home._footer')
-@yield('footerjs') 
+@yield('footerjs')
 
 
 
