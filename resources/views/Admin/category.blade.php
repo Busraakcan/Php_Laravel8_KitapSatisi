@@ -22,7 +22,8 @@
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Category List</h5>
+
+                    <a href="{{route('admin_category_add')}}" type="button" class="btn btn-block btn bg-success text-white" style="width: 200px ">Add Category</a>
                 </div>
 
                     <div class="card">
@@ -46,7 +47,7 @@
                                     <td>{{$rs->title}}</td>
                                     <td>{{$rs->status}}</td>
                                     <td>Edit</td>
-                                    <td>Delete</td>
+                                    <td><a href="{{route('admin_category_delete',['id'=>$rs->id])}}" onclick="return confirm('Silmek istediğinizden emin misiniz?')">Delete</a> </td>
                                 </tr>
                                 @endforeach
                                 </tbody>
