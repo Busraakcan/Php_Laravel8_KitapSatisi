@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use http\Client\Request;
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     //
@@ -10,24 +13,12 @@ class HomeController extends Controller
          return view("home.index");
          //echo " deneme";
     }
+
     public function aboutus()
     {
         return view("home.about");
 
     }
-    public function test($id,$name)
-    {
-        $data['id']=$id;
-        $data['name']=$name;
-        return view('home.test',$data);
-        //return view('home.test',['id'=>$id,'name'=>$name]);
 
-        /*
-        echo " id Number : ", $id;
-        echo " <br> Name : ", $name;
-        for($i=1;$i<=$id;$i++)
-        {
-            echo "<br> $i - $name";
-        }*/
-    }
+
 }
