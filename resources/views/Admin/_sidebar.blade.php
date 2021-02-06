@@ -34,13 +34,19 @@
         </a>
 
     </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('admin_product')}}" >
+            <i class="fas fa-fw fa-cog"></i>
+            Products
+        </a>
 
+    </li>
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('admin_category')}}" data-toggle="collapse" data-target="#collapseUtilities"
            aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
-            <span>Product</span>
+            <span>lavel</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
              data-parent="#accordionSidebar">

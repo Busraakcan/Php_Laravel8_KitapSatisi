@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Category List')
+@section('title', 'Products List')
 
 @section('content')
     <div class="content-wrapper">
@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h3>Categories</h3>
+                        <h3>Products</h3>
                     </div>
                     <div content="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a> </li>
-                            <li class="breadcrumb-item active"><a href="#">Category</a> </li>
+                            <li class="breadcrumb-item active"><a href="#">Products</a> </li>
                         </ol>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
             <div class="card">
                 <div class="card-header">
 
-                    <a href="{{route('admin_category_add')}}" type="button" class="btn btn-block btn bg-success text-white" style="width: 200px ">Add Category</a>
+                    <a href="{{route('admin_product_add')}}" type="button" class="btn btn-block btn-info" style="width: 200px ">Add Product</a>
                 </div>
 
                     <div class="card">
@@ -32,22 +32,28 @@
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Parent</th>
+                                    <th>Category</th>
                                     <th>Title</th>
+                                    <th>Amount</th>
+                                    <th>Price</th>
+                                    <th>Image</th>
                                     <th>Status</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th style="..." colspan="2">Actions</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($datalist as $rs)
                                 <tr>
                                     <td>{{$rs->id}}</td>
-                                    <td>{{$rs->parent_id}}</td>
+                                    <td>{{$rs->category_id}}</td>
                                     <td>{{$rs->title}}</td>
+                                    <td>{{$rs->amount}}</td>
+                                    <td>{{$rs->price}}</td>
+                                    <td>{{$rs->image}}</td>
                                     <td>{{$rs->status}}</td>
-                                    <td><a href="{{route('admin_category_edit',['id'=>$rs->id])}}"></a></td>
-                                    <td><a href="{{route('admin_category_delete',['id'=>$rs->id])}}" onclick="return confirm('Silmek istediğinizden emin misiniz?')"></a> </td>
+                                    <td><a href="{{route('admin_product_edit',['id'=>$rs->id])}}"><ion-icon name="create-outline"></ion-icon></a></td>
+                                    <td><a href="{{route('admin_product_delete',['id'=>$rs->id])}}" onclick="return confirm('Silmek istediğinizden emin misiniz?')"><ion-icon name="trash-outline"></ion-icon></a> </td>
                                 </tr>
                                 @endforeach
                                 </tbody>
@@ -68,26 +74,4 @@
 
 
 
-@endsection
-@section('footer')
-
-    <script>
-
-        $(function (){
-            $("#exaple1").DataTable({
-                "responsive": true,
-                "autoWidth": false,
-            });
-            $('#exaple2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching":false,
-                "ordering": true,
-                "info": true,
-                "autoWidth":false,
-                "responsive": true,
-
-            });
-        });
-    </script>
 @endsection
