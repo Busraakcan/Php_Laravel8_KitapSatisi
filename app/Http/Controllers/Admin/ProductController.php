@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -54,6 +55,7 @@ class ProductController extends Controller
         $data->yayın_evi=$request->input('yayın_evi');
         $data->detail=$request->input('detail');
         $data->slug=$request->input('slug');
+        $data->image=Storage::putFile('image',$request->file('image')); //file upload
         $data->save();
         return redirect()->route('admin_product');
 
@@ -105,6 +107,7 @@ class ProductController extends Controller
         $data->yayın_evi= $request->input('yayın_evi');
         $data->detail= $request->input('detail');
         $data->slug= $request->input('slug');
+        $data->image=Storage::putFile('image',$request->file('image'));
         $data->save();
         return redirect()->route('admin_product');
     }

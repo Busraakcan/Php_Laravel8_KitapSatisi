@@ -50,7 +50,11 @@
                                     <td>{{$rs->title}}</td>
                                     <td>{{$rs->amount}}</td>
                                     <td>{{$rs->price}}</td>
-                                    <td>{{$rs->image}}</td>
+                                    <td>
+                                        @if($rs->image)
+                                             <img src="{{Storage::url($rs->image)}}" height="40" alt="">
+                                            @endif
+                                    </td>
                                     <td>{{$rs->status}}</td>
                                     <td><a href="{{route('admin_product_edit',['id'=>$rs->id])}}"><ion-icon name="create-outline"></ion-icon></a></td>
                                     <td><a href="{{route('admin_product_delete',['id'=>$rs->id])}}" onclick="return confirm('Silmek istediğinizden emin misiniz?')"><ion-icon name="trash-outline"></ion-icon></a> </td>
