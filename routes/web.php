@@ -44,13 +44,17 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         Route::get('delete/{id}', [\App\Http\Controllers\Admin\ProductController::class,'destroy'])->name('admin_product_delete');
         Route::get('show', [\App\Http\Controllers\Admin\ProductController::class,'show'])->name('admin_product_show');
     });
-    #Product
+    #Product Image Gallery
     Route::prefix('image')->group(function(){
         Route::get('create/{product_id}', [\App\Http\Controllers\Admin\ImageController::class,'create'])->name('admin_image_add');
         Route::post('store/{product_id}', [\App\Http\Controllers\Admin\ImageController::class,'store'])->name('admin_image_store');
         Route::get('delete/{id}/{product_id}', [\App\Http\Controllers\Admin\ImageController::class,'destroy'])->name('admin_image_delete');
         Route::get('show', [\App\Http\Controllers\Admin\ImageController::class,'show'])->name('admin_image_show');
     });
+    #Setting
+    Route::get('setting', [\App\Http\Controllers\Admin\SettingController::class,'index'])->name('admin_setting');
+    Route::post('setting/update/', [\App\Http\Controllers\Admin\SettingController::class,'update'])->name('admin_setting_update');
+
 });
 
 //Product

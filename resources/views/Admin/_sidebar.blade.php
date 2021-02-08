@@ -71,11 +71,11 @@
     <!-- Nav Item - Pages Collapse Menu -->
 >
 
-    <!-- Nav Item - Charts -->
+    <!-- Nav Item - Setting -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a href="{{route('admin_setting')}}" class="nav-link" >
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
+            <span>Setting</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
