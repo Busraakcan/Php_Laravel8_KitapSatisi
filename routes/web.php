@@ -5,18 +5,16 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/home2', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::redirect('/anasayfa', '/home')->name( 'anasayfa');
-
-Route::get('/', function () {
-    return view('home.index');
-});//Bir dosyaya giriyorsa
-
-Route::get('/home', [HomeController::class, 'index'])->name( 'home');
+Route::get('/', [HomeController::class, 'index'])->name( 'home');
+Route::get('/home', [HomeController::class, 'index'])->name( 'homepage');
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name( 'aboutus');
+Route::get('/referances', [HomeController::class, 'referances'])->name( 'referances');
+Route::get('/fag', [HomeController::class, 'fag'])->name( 'fag');
+Route::get('/contact', [HomeController::class, 'contact'])->name( 'contact');
 //Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->where(['id'=> '[0-9]+', 'name'=>'[A-Za-z]+']);
 Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->whereNumber('id')->whereAlpha('name')->name( 'test');
 
@@ -59,15 +57,6 @@ Route::middleware('auth')->prefix('admin')->group(function(){
 
 //Product
 
-
-
-
-
-
-
-
-
-
 Route::get('/admin', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name( 'adminhome')->middleware('auth');
 //adminlogin
 Route::get('/admin/login', [\App\Http\Controllers\Admin\HomeController::class, 'login'])->name( 'adminlogin');
@@ -75,7 +64,7 @@ Route::get('/admin/login', [\App\Http\Controllers\Admin\HomeController::class, '
 Route::post('/admin/logincheck', [\App\Http\Controllers\Admin\HomeController::class, 'logincheck'])->name( 'logincheck');
 
 //admin admin_logout
-Route::get('/admin/logaout', [\App\Http\Controllers\Admin\HomeController::class, 'logaout'])->name( 'admin_logout');
+Route::get('/logout', [\App\Http\Controllers\Admin\HomeController::class, 'logout'])->name( 'logout');
 
 
 

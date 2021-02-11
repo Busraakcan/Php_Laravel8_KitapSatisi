@@ -28,7 +28,14 @@
                             </ul>
                         </div>
                         <div class="header__top__right__auth">
-                            <a href="#"><i class="fa fa-user"></i> Login</a>
+                            @auth
+                            <a style="display: inline-block" href="#"> {{ Auth::user()->name }}</a> /
+                            <a style="display: inline-block" href="{{route('logout')}}"> Logout</a>
+                            @endauth
+                            @guest
+                            <a style="display: inline-block" href="{{route('login')}}"> Login</a> /
+                            <a style="display: inline-block" href="{{route('register')}}"> Register</a>
+                            @endguest
                         </div>
                     </div>
                 </div>
@@ -38,7 +45,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                <div class="header__logo">
+                <div class="header__logo" href="{{route('home')}}">
                     <h2 > BOOK SHOP</h2>
                     <a href="{{asset('assets')}}/home//index.html"><img src="{{asset('assets')}}/home/img/bookShop.png" alt="" height="70" width="100" ></a>
                 </div>
@@ -46,18 +53,18 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href=".{{asset('assets')}}/home/index.html">Home</a></li>
-                        <li><a href="{{asset('assets')}}/home/shop-grid.html">Shop</a></li>
+                        <li class="active"><a href="{{route('home')}}">Home</a></li>
+                        <li><a href="{{route('home')}}">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="{{asset('assets')}}/home/shop-details.html">Shop Details</a></li>
-                                <li><a href="{{asset('assets')}}/home/shoping-cart.html">Shoping Cart</a></li>
-                                <li><a href="{{asset('assets')}}/home/checkout.html">Check Out</a></li>
-                                <li><a href="{{asset('assets')}}/home/blog-details.html">Blog Details</a></li>
+                                <li><a href="{{route('fag')}}">FAQ</a></li>
+                                <li><a href="{{route('referances')}}">Referances</a></li>
+                                <li><a href="{{route('aboutus')}}}">About As</a></li>
+                                <li><a href="{{route('contact')}}">Contact</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{asset('assets')}}/home/blog.html">Blog</a></li>
-                        <li><a href="{{asset('assets')}}/home/contact.html">Contact</a></li>
+                        <li><a href="{{route('fag')}}">FAQ</a></li>
+                        <li><a href="{{route('referances')}}">Referances</a></li>
                     </ul>
                 </nav>
             </div>

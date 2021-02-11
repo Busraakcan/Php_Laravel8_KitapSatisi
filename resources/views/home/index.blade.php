@@ -1,12 +1,11 @@
+@php
+    $setting = \App\Http\Controllers\HomeController::getsetting()
+@endphp
 @extends('layouts.home')
 
-@section('title', 'Laravel Kitap Satisi')
-
-@section('description')
-    İstediiniz tüm kitaplara rahatça ulaşabileceğiniz kitap sitesine hoşgeldiniz
-@endsection
-
-@section('keywords','Roman, Hikaye, Şiir Kitabi, Öykü Kitabi, Ansiklopedi')
+@section('title', $setting->title)
+@section('description'){{$setting->description}}@endsection
+@section('keywords',$setting->keywords)
 
 @section('content')
     <!-- Featured Section Begin -->

@@ -18,8 +18,7 @@
             <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     @auth
-                    <a class="btn btn-primary" href="#">{{Auth::user()->name}}</a>
-                    <a class="btn btn-primary" href="{{route('admin_logout')}}">Logout</a>
+                    <a class="btn btn-primary" href="{{route('logout')}}">Logout</a>
                     @endauth
             </div>
         </div>
