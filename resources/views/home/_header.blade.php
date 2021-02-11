@@ -39,7 +39,8 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="{{asset('assets')}}/home//index.html"><img src="{{asset('assets')}}/home/img/logo.png" alt=""></a>
+                    <h2 > BOOK SHOP</h2>
+                    <a href="{{asset('assets')}}/home//index.html"><img src="{{asset('assets')}}/home/img/bookShop.png" alt="" height="70" width="100" ></a>
                 </div>
             </div>
             <div class="col-lg-6">

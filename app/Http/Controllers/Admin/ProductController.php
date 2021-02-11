@@ -30,7 +30,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $datalist=Category::all();
+        $datalist=Category::with('children')->get();
         return view('admin.product_add',['datalist'=>$datalist]);
     }
 
@@ -81,7 +81,7 @@ class ProductController extends Controller
     public function edit(Product $product,$id)
     {
         $data = Product::find($id);
-        $datalist= Category::all();
+        $datalist= Category::with('children')->get();
         return view('admin.product_edit',['data'=>$data,'datalist'=>$datalist]);
     }
 
@@ -108,6 +108,10 @@ class ProductController extends Controller
         $data->detail= $request->input('detail');
         $data->slug= $request->input('slug');
         $data->image=Storage::putFile('image',$request->file('image'));
+        if($request->file('image')!=null)
+        {
+            $data->image = Storage::putFile('images', $request->file('image'));
+        }
         $data->save();
         return redirect()->route('admin_product');
     }

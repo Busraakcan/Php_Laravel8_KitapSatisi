@@ -1,21 +1,32 @@
+@php
+    $parentCategories = \App\Http\Controllers\HomeController::categorylist()
+@endphp
+
 <div class="col-lg-3">
     <div class="hero__categories">
         <div class="hero__categories__all">
             <i class="fa fa-bars"></i>
             <span>All departments</span>
         </div>
-        <ul>
-            <li><a href="#">Fresh Meat</a></li>
-            <li><a href="#">Vegetables</a></li>
-            <li><a href="#">Fruit & Nut Gifts</a></li>
-            <li><a href="#">Fresh Berries</a></li>
-            <li><a href="#">Ocean Foods</a></li>
-            <li><a href="#">Butter & Eggs</a></li>
-            <li><a href="#">Fastfood</a></li>
-            <li><a href="#">Fresh Onion</a></li>
-            <li><a href="#">Papayaya & Crisps</a></li>
-            <li><a href="#">Oatmeal</a></li>
-            <li><a href="#">Fresh Bananas</a></li>
+        <ul class="category-list">
+            @foreach($parentCategories as $rs)
+                <li >
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                     <span>{{$rs->title}}</span>
+                    </div>
+                     @if(!$rs->children->isEmpty())
+                        <ul class="sub-menu">
+                            @foreach($rs->children as $child)
+                                <li><a href="#">{{$child->title}}</a></li>
+                            @endforeach
+                        </ul>
+                     @endif
+
+                </li>
+            @endforeach
         </ul>
+
     </div>
 </div>
+

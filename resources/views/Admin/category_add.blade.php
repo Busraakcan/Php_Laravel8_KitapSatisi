@@ -25,18 +25,18 @@
                     <h3 class="card-title">Add Category</h3>
                 </div>
                 <div class="card-body">
-                   Add Category Form
+
                     <form role="form" action="{{route('admin_category_create')}}" method="post">
 
                         @csrf
                         <div class="form-group">
-                            <label >Parent</label>
+                            <label >Parent Category</label>
 
                             <select class="form-control select2" name="parent_id" style="width: 100%;">
                                 <option value="0" selected="selected">Main Category</option>
 
                                 @foreach($datalist as $rs)
-                                    <option value="{{$rs->id}}">{{$rs->title}}</option>
+                                    <option value="{{$rs->id}}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs,$rs->title)}}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -16,7 +16,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h3>Product Add</h3>
+                        <h3>Category</h3>
                     </div>
                     <div content="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -33,16 +33,15 @@
                     <h3 class="card-title">Add Product</h3>
                 </div>
                 <div class="card-body">
-                   Add Product Form
                     <form action="{{route('admin_product_store')}}" enctype="multipart/form-data" method="post" role="form">
 
                         @csrf
                         <div class="form-group">
-                            <label >Parent</label>
+                            <label >Category</label>
 
                             <select class="form-control select2" name="category_id" style="width: 100%;">
                                 @foreach($datalist as $rs)
-                                    <option value="{{$rs->id}}">{{$rs->title}}</option>
+                                    <option value="{{$rs->id}}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs,$rs->title)}}</option>
                                 @endforeach
                             </select>
                         </div>

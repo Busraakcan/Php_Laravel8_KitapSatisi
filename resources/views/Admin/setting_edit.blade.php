@@ -35,7 +35,8 @@
                     </li>
                 </ul>
 
-                    <div class="tab-content" id="genel">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade" id="genel">
                         <h5>Genel Ayarlar</h5>
                         <input type="hidden" name="id" value="{{$data->id}}" class="form-control" >
                         <div class="form-group">
@@ -106,10 +107,6 @@
                                 <label>Contact</label>
                                 <textarea id="summernote2" name="contact" value="{{$data->contact}}" class="form-control" ></textarea>
                             </div>
-                            <div class="form-group">
-                                <label>Referances</label>
-                                <textarea id="summernote3" name="referances" value="{{$data->referances}}" class="form-control" ></textarea>
-                            </div>
                             <script>
                                 $('#summernote').summernote({
                                     tabsize: 2,
@@ -140,7 +137,7 @@
                             </script>
                         </div>
                     </div>
-                    <div class="tab-pane fade active in" id="genel">
+                    <div class="tab-pane fade active in" id="iletisim">
                         <h5>İletişim Sayfası</h5>
                         <div class="form-group">
                             <label>Company</label>
@@ -163,7 +160,7 @@
                             <input type="text" name="email" value="{{$data->email}}" class="form-control" >
                         </div>
                     </div>
-                    <div class="tab-pane fade active in" id="genel">
+                    <div class="tab-pane fade active in" id="referanslar">
                         <h5>Referanslar</h5>
                         <div class="form-group">
                             <label>Referances</label>
@@ -183,11 +180,10 @@
                                 ]
                             });
                         </script>
-                        <div class="form-group">
-                            <label>Slug</label>
-                            <textarea id="summernote2" name="slug" value="{{$data->slug}}" class="form-control" ></textarea>
-                        </div>
                     </div>
+                </div>
+
+
                     <button type="submit" class="btn btn-primary">Update Setting</button>
 
             </div>

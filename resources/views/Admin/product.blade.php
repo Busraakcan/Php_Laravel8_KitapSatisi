@@ -47,13 +47,15 @@
                                 @foreach($datalist as $rs)
                                 <tr>
                                     <td>{{$rs->id}}</td>
-                                    <td>{{$rs->category_id}}</td>
+                                    <td>
+                                        {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category,$rs->category->title)}}
+                                    </td>
                                     <td>{{$rs->title}}</td>
                                     <td>{{$rs->amount}}</td>
                                     <td>{{$rs->price}}</td>
                                     <td>
                                         @if($rs->image)
-                                             <img src="{{Storage::url($rs->image)}}" height="40" alt="">
+                                             <img src="{{Storage::url($rs->image)}}" height="60" width="50" alt="">
                                             @endif
                                     </td>
                                     <td><a onclick="return !window.open(this.href,'','top=50 left=100 width=1100, height=700')" href="{{route('admin_image_add',['product_id'=>$rs->id])}}">
