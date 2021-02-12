@@ -1,3 +1,5 @@
+
+
 @php
     $setting = \App\Http\Controllers\HomeController::getsetting()
 @endphp
@@ -13,15 +15,13 @@
 @section('title', 'About Us')
 
 
-     <div class="col-sm-12">
-         <h1>About Us</h1>
-         <a href="{{asset('assets')}}/home/index.html" target="_blank"><img src="{{asset('assets')}}/home/img/bookShop.png" alt=""><h3>BOOK SHOP</h3></a>
-         Gordion Akademi, Eğitim Danışmanlık Yayıncılık Ltd Şti 10 yılı aşkın süredir
-         İngilizce eğitimine yönelik kaliteli eğitim içeriği sağlamayı ve meslekiçi
-         eğitim desteğini de içeren kaliteli ve istikrarlı bir hizmet sunmayı ilke edinmiştir.
-         Yabancı dil alanında yüz yüze, uzaktan ve elektronik öğrenmeyi desteklemek amacıyla
-         bünyesindeki uzman ekibiyle Yabancı Dil Yüksek Okullarına eğitim çözümleri sağlamaktadır.
-         <br>
-     </div>
-
-
+<div class="col-sm-12">
+    <h1>About Us</h1>
+    <a href="{{asset('assets')}}/home/index.html" target="_blank"><img src="{{asset('assets')}}/home/img/bookShop.png" alt=""><h3>BOOK SHOP</h3></a>
+    Gordion Akademi, Eğitim Danışmanlık Yayıncılık Ltd Şti 10 yılı aşkın süredir
+    İngilizce eğitimine yönelik kaliteli eğitim içeriği sağlamayı ve meslekiçi
+    eğitim desteğini de içeren kaliteli ve istikrarlı bir hizmet sunmayı ilke edinmiştir.
+    Yabancı dil alanında yüz yüze, uzaktan ve elektronik öğrenmeyi desteklemek amacıyla
+    bünyesindeki uzman ekibiyle Yabancı Dil Yüksek Okullarına eğitim çözümleri sağlamaktadır.
+    <br>
+</div>

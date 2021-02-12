@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <div  href="{{route('home')}}">
-        <a href="/"><img src="{{asset('assets')}}/home/img/slider-2.jpg" alt=""  ></a>
+    <div>
+        @include('home._categorical')
     </div>
 </div>

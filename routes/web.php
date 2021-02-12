@@ -13,8 +13,11 @@ Route::get('/welcome', function () {
 Route::get('/', [HomeController::class, 'index'])->name( 'home');
 Route::get('/home', [HomeController::class, 'index'])->name( 'homepage');
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name( 'aboutus');
-Route::get('/referances', [HomeController::class, 'referances'])->name( 'referances');
 Route::get('/fag', [HomeController::class, 'fag'])->name( 'fag');
+Route::get('/referances', [HomeController::class, 'referances'])->name( 'referances');
+Route::get('/sendmessage', [HomeController::class, 'sendmessage'])->name( 'sendmessage');
+Route::get('/product/{id}/', [\App\Http\Controllers\ProductController::class, 'detail'])->name( 'productDetail');
+Route::get('/category-products/{id}', [HomeController::class, 'categoryProducts'])->name( 'categoryProducts');
 Route::get('/contact', [HomeController::class, 'contact'])->name( 'contact');
 //Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->where(['id'=> '[0-9]+', 'name'=>'[A-Za-z]+']);
 Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->whereNumber('id')->whereAlpha('name')->name( 'test');

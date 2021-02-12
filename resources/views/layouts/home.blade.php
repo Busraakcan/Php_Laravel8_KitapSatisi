@@ -29,7 +29,7 @@
 
 <body>
 @include('home._header')
-<section class="hero">
+<section class="hero" style="padding-bottom: 0!important;">
     <div class="container">
         <div class="row">
             @include('home._category')
@@ -37,7 +37,6 @@
         </div>
     </div>
 </section>
-@include('home._categorical')
 @section('content')
 @show
 @include('home._footer')
