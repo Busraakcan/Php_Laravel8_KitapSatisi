@@ -1,10 +1,13 @@
+@php
+    $setting = \App\Http\Controllers\HomeController::getsetting()
+@endphp
 <footer class="footer spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__about__logo" href="{{route('home')}}">
-                        <a href="{{asset('assets')}}/home/index.html"><img src="{{asset('assets')}}/home/img/bookShop.png" alt="" height="150" width="180"><h3>BOOK SHOP</h3></a>
+                        <a href="/"><img src="{{asset('assets')}}/home/img/booklogo.jpg" alt="" height="150" width="180"><h3>BOOK SHOP</h3></a>
                     </div>
                     <ul>
                         <li><a href="{{route('aboutus')}} " target="_blank" >About Us</a></li>

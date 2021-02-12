@@ -20,12 +20,7 @@
             </div>
         </div>
     </div>
-    <div class="hero__item set-bg" data-setbg="{{asset('assets')}}/home/img/hero/banner.jpg">
-        <div class="hero__text">
-            <span>FRUIT FRESH</span>
-            <h2>Vegetable <br />100% Organic</h2>
-            <p>Free Pickup and Delivery Available</p>
-            <a href="#" class="primary-btn">SHOP NOW</a>
-        </div>
+    <div  href="{{route('home')}}">
+        <a href="/"><img src="{{asset('assets')}}/home/img/slider-2.jpg" alt=""  ></a>
     </div>
 </div>

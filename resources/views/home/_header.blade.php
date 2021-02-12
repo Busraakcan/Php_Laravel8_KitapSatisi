@@ -1,3 +1,6 @@
+@php
+    $setting = \App\Http\Controllers\HomeController::getsetting()
+@endphp
 <header class="header">
     <div class="header__top">
         <div class="container">
@@ -13,10 +16,10 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            @if($setting->facebook !=null) <a href="{{$setting->facebook}}" target="_blank"><i class="fa fa-facebook"></i></a> @endif
+                            @if($setting->instagram !=null) <a href="{{$setting->instagram}}" target="_blank"><i class="fa fa-instagram"></i></a> @endif
+                            @if($setting->youtube !=null) <a href="{{$setting->youtube}}" target="_blank"><i class="fa fa-youtube"></i></a> @endif
+                            @if($setting->twitter !=null) <a href="{{$setting->twitter}}" target="_blank"><i class="fa fa-twitter"></i></a> @endif
                         </div>
                         <div class="header__top__right__language">
                             <img src="{{asset('assets')}}/home/img/language.png" alt="">
@@ -27,16 +30,27 @@
                                 <li><a href="#">English</a></li>
                             </ul>
                         </div>
-                        <div class="header__top__right__auth">
                             @auth
-                            <a style="display: inline-block" href="#"> {{ Auth::user()->name }}</a> /
-                            <a style="display: inline-block" href="{{route('logout')}}"> Logout</a>
+                            <div class="header__top__right__language">
+                            <div><a href="">{{ Auth::user()->name }}</a></div>
+                                <span class="arrow_carrot-down"></span>
+                                            <ul>
+                                                <li><a href="{{route('myprofile')}}">Profile</a></li>
+                                                <li><a href="/login">Message</a></li>
+                                                <li><a href="/login">Comment</a></li>
+                                                <li><a href="/login">Favorite</a></li>
+                                                <li><a href="{{route('logout')}}">Logout</a></li>
+                                            </ul>
+
+
+                                </div>
                             @endauth
+
                             @guest
-                            <a style="display: inline-block" href="{{route('login')}}"> Login</a> /
-                            <a style="display: inline-block" href="{{route('register')}}"> Register</a>
+                                <div class="user-panel">
+                                    <a href="/login">Login</a> / <a href="/register">Register</a>
+                                </div>
                             @endguest
-                        </div>
                     </div>
                 </div>
             </div>
@@ -47,7 +61,7 @@
             <div class="col-lg-3">
                 <div class="header__logo" href="{{route('home')}}">
                     <h2 > BOOK SHOP</h2>
-                    <a href="{{asset('assets')}}/home//index.html"><img src="{{asset('assets')}}/home/img/bookShop.png" alt="" height="70" width="100" ></a>
+                    <a href="/"><img src="{{asset('assets')}}/home/img/booklogo.jpg" alt="" height="70" width="100" ></a>
                 </div>
             </div>
             <div class="col-lg-6">

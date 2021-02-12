@@ -1,12 +1,12 @@
 @php
     $parentCategories = \App\Http\Controllers\HomeController::categorylist()
 @endphp
-
 <div class="col-lg-3">
+    <div class="category-nav @if(!isset($page)) show-on-click @endif">
     <div class="hero__categories">
         <div class="hero__categories__all">
             <i class="fa fa-bars"></i>
-            <span>All departments</span>
+            <span>CATEGORIES</span>
         </div>
         <ul class="header__menu__dropdown">
             @foreach($parentCategories as $rs)
@@ -29,7 +29,7 @@
 
     </div>
 </div>
-
+</div>
 
 
 
