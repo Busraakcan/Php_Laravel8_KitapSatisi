@@ -19,9 +19,15 @@ Route::get('/sendmessage', [HomeController::class, 'sendmessage'])->name( 'sendm
 Route::get('/product/{id}/', [\App\Http\Controllers\ProductController::class, 'detail'])->name( 'productDetail');
 Route::get('/category-products/{id}', [HomeController::class, 'categoryProducts'])->name( 'categoryProducts');
 Route::get('/contact', [HomeController::class, 'contact'])->name( 'contact');
+Route::post('/new-product-comment', [\App\Http\Controllers\ProductController::class, 'makeComment'])->name( 'makeComment');
+Route::get('/delete-product-comment/{id}', [\App\Http\Controllers\ProductController::class, 'deleteComment'])->name( 'deleteComment');
 //Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->where(['id'=> '[0-9]+', 'name'=>'[A-Za-z]+']);
 Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->whereNumber('id')->whereAlpha('name')->name( 'test');
 
+
+Route::get('/shopping-card', [\App\Http\Controllers\ShoppingCartController::class, 'index'])->name( 'shoppingCartView');
+Route::post('/add-shoppingcart/{id}', [\App\Http\Controllers\ShoppingCartController::class, 'store'])->name( 'addToShoppingCart');
+Route::get('/remove-product-shoppingcart/{id}', [\App\Http\Controllers\ShoppingCartController::class, 'removeProduct'])->name( 'removeProductShoppingCart');
 //Admin
 
 Route::middleware('auth')->prefix('admin')->group(function(){
@@ -46,6 +52,12 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         Route::get('delete/{id}', [\App\Http\Controllers\Admin\ProductController::class,'destroy'])->name('admin_product_delete');
         Route::get('show', [\App\Http\Controllers\Admin\ProductController::class,'show'])->name('admin_product_show');
     });
+
+    Route::prefix('comments')->group(function(){
+        Route::get('/',[\App\Http\Controllers\Admin\ProductCommentController::class,'index'])->name('admin_comment');
+        Route::get('validate/{id}',[\App\Http\Controllers\Admin\ProductCommentController::class,'validateComment'])->name('admin_comment_validate');
+        Route::get('delete/{id}',[\App\Http\Controllers\Admin\ProductCommentController::class,'destroy'])->name('admin_comment_delete');
+    });
     #Product Image Gallery
     Route::prefix('image')->group(function(){
         Route::get('create/{product_id}', [\App\Http\Controllers\Admin\ImageController::class,'create'])->name('admin_image_add');
@@ -63,6 +75,7 @@ Route::middleware('auth')->prefix('admin')->group(function(){
 #Product Image Gallery
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function(){
     Route::get('/', [UserController::class,'index'])->name('myprofile');
+    Route::get('comments', [UserController::class,'userComments'])->name('userComments');
 
 });
 Route::middleware('auth')->prefix('user')->namespace('user')->group(function(){
@@ -85,6 +98,6 @@ Route::get('/logout', [\App\Http\Controllers\Admin\HomeController::class, 'logou
 
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');

@@ -53,8 +53,8 @@
                     </div>
                     <div class="col-lg-10">
                     <div class="checkout__form">
-                        <h4>USER PROFILE</h4>
-                            @include('profile.show')
+                        <h4>User Comments</h4>
+                            @include('profile.comments')
                     </div>
                     </div>
                 </div>

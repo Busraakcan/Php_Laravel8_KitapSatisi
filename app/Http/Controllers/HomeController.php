@@ -28,7 +28,8 @@ class HomeController extends Controller
     public function index()
     {
          $setting= Setting::first();
-         return view("home.index", ['setting'=>$setting,'page'=>'home']);
+         $allProducts = Product::all();
+         return view("home.index", ['setting'=>$setting, 'allProducts' => $allProducts, 'page'=>'home']);
 
     }
 

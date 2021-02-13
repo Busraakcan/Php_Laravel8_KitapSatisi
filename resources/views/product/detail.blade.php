@@ -21,6 +21,19 @@
                         <h3>{{$product->title}}</h3>
                         <div class="product__details__price">${{$product->price}}</div>
                         <p>{{$product->description}}</p>
+
+                        <form action="{{route('addToShoppingCart', $product->id)}}" method="POST">
+                            @csrf
+                            <div class="product__details__quantity">
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <input name="count" type="text" value="1">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn primary-btn">ADD TO CARD</button>
+                        </form>
+
                         <ul>
                             <li><b>Yazar</b> <span>{{$product->yazar}}</span></li>
                             <li><b>Kategori</b> <span>{{$product->category->title}}</span></li>
@@ -56,20 +69,24 @@
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Yorumlar Products Infomation</h6>
-                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.
-                                        Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam
-                                        sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo
-                                        eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat.
-                                        Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Praesent
-                                        sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac
-                                        diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ante
-                                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                                        Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
-                                        Proin eget tortor risus.</p>
+                                @foreach($product->comments()->where('validated', true)->get() as $comment)
+                                <div class="product__details__tab__desc" style="padding-top: 10px!important;">
+                                    <h6 style="margin-bottom: 5px!important;">Yorum: {{$comment->user->name}}</h6>
+                                    <p>{{$comment->text}}</p>
                                 </div>
+                                @endforeach
+                                    <div class="product__details__tab__desc">
+                                        <h6 style="margin-bottom: 5px!important;">Yorum Yap:</h6>
+                                        <form action="{{route('makeComment')}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{$product->id}}" />
+                                            <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}" />
+                                            <div class="form-group">
+                                                <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            </div>
+                                            <button class="btn btn-primary mb-2" type="submit">Yorum Yap</button>
+                                        </form>
+                                    </div>
                             </div>
                         </div>
                     </div>

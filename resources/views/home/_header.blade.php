@@ -1,5 +1,6 @@
 @php
-    $setting = \App\Http\Controllers\HomeController::getsetting()
+    $setting = \App\Http\Controllers\HomeController::getsetting();
+    $shoppingCart = \App\Http\Controllers\ShoppingCartController::countShoppingCart();
 @endphp
 <header class="header">
     <div class="header__top">
@@ -85,8 +86,7 @@
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                        <li><a href="{{route('shoppingCartView')}}"><i class="fa fa-shopping-bag"></i> <span>{{$shoppingCart}}</span></a></li>
                     </ul>
                     <div class="header__cart__price">item: <span>$150.00</span></div>
                 </div>

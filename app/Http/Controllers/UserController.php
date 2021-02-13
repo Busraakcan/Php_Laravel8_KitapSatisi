@@ -17,6 +17,11 @@ class UserController extends Controller
         return view('home.user_profile');
     }
 
+    public function userComments()
+    {
+        return view('home.user_comments');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
